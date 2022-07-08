@@ -1,0 +1,92 @@
+const drinks = [
+  {
+    drinkName: "Grape Soju",
+    description: "",
+    alcoholic: true,
+    price: 10.0,
+  },
+  {
+    drinkName: "Blueberry Soju",
+    description: "",
+    alcoholic: true,
+    price: 10.0,
+  },
+  {
+    drinkName: "Strawberry Soju",
+    description: "",
+    alcoholic: true,
+    price: 10.0,
+  },
+  {
+    drinkName: "Peach Soju",
+    description: "",
+    alcoholic: true,
+    price: 10.0,
+  },
+  {
+    drinkName: "Apple Soju",
+    description: "",
+    alcoholic: true,
+    price: 10.0,
+  },
+  {
+    drinkName: "Citrus Soju",
+    description: "",
+    alcoholic: true,
+    price: 10.0,
+  },
+  {
+    drinkName: "Heineken",
+    description: "",
+    alcoholic: true,
+    price: 10.0,
+  },
+  {
+    drinkName: "Kopparberg",
+    description: "",
+    alcoholic: true,
+    price: 10.0,
+  },
+  {
+    drinkName: "Coke",
+    description: "",
+    alcoholic: false,
+    price: 2.5,
+  },
+  {
+    drinkName: "Diet Coke",
+    description: "",
+    alcoholic: false,
+    price: 2.5,
+  },
+  {
+    drinkName: "Sprite",
+    description: "",
+    alcoholic: false,
+    price: 2.5,
+  },
+  {
+    drinkName: "Orange Juice",
+    description: "",
+    alcoholic: false,
+    price: 4.0,
+  },
+  {
+    drinkName: "Apple Juice",
+    description: "",
+    alcoholic: false,
+    price: 4.0,
+  },
+  {
+    drinkName: "Apple Aloe Vera Juice",
+    description: "",
+    alcoholic: false,
+    price: 4.0,
+  },
+  {
+    drinkName: "Peach Aloe Vera Juice",
+    description: "",
+    alcoholic: false,
+    price: 4.0,
+  },
+];
