@@ -1,15 +1,28 @@
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { Container } from "@mui/material";
+
 import "./App.css";
-import Register from "./Pages/Register";
-// import { Provider } from "react-redux";
-// functions
-// import { getTest } from "./functions/test";
+import Navbar from "./components/Navbar.js";
+import Register from "./components/Forms/Registration/Register";
+import Login from "./components/Forms/Login/Login";
+import FoodMenu from "./components/FoodMenu";
+import DrinksMenu from "./components/DrinksMenu";
 
 function App() {
   return (
-    // <Provider state={{}}>
-    <Register />
+    // <Container maxWidth="lg">
+    <BrowserRouter>
+      <Navbar />
 
-    // </Provider>
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/foodmenu" element={<FoodMenu />} />
+        <Route path="/drinksmenu" element={<DrinksMenu />} />
+      </Routes>
+    </BrowserRouter>
+    // </Container>
   );
 }
 

@@ -11,7 +11,7 @@ const foodMenuSchema = mongoose.Schema(
       required: true,
     },
     allergens: {
-      type: String,
+      type: Array,
       required: true,
     },
     dietryRequirements: {
@@ -20,7 +20,11 @@ const foodMenuSchema = mongoose.Schema(
     },
     description: {
       type: String,
-      required: true,
+      required: false,
+    },
+    type: {
+      type: String,
+      required: false,
     },
     spiceRating: {
       type: Number,

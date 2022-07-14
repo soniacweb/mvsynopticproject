@@ -1,7 +1,8 @@
 import express from "express";
 import {
   makeOrder,
-  addItemsToOrder,
+  addItemToOrder,
+  deleteItemInOrder,
   // getOrder,
   // updateOrder,
 } from "../controllers/orderController.js";
@@ -13,6 +14,7 @@ router
   .route("/order")
   .post(protect, makeOrder)
   // .get(protect, getOrder)
-  .put(protect, addItemsToOrder);
+  .put(protect, addItemToOrder)
+  .delete(protect, deleteItemInOrder);
 
 export default router;

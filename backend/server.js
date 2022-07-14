@@ -19,16 +19,17 @@ connectToDB();
 const app = express();
 
 // middleware
-if (process.env.NODE_ENV === "developement") {
+if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
+  console.log("adding cors");
   app.use(cors({ origin: true, credentials: true }));
 }
 
 // routes
 app.use(express.json()); // to parse req.body for post requests
 
-app.use("/api/foodmenu", foodMenuRoutes);
-app.use("/api/drinksmenu", drinksMenuRoutes);
+app.use("/api", foodMenuRoutes);
+app.use("/api", drinksMenuRoutes);
 app.use("/api/users", userRoutes);
 app.use("/", orderRoutes);
 

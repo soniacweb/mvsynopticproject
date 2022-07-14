@@ -33,11 +33,11 @@ const makeOrder = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400); // daddy nooooooooo
-    throw new Error("Unable to create a new order for you");
+    throw new Error("Unable to create a new order");
   }
 });
 
-const addItemsToOrder = asyncHandler(async (req, res) => {
+const addItemToOrder = asyncHandler(async (req, res) => {
   const { _id, name, qty, image, price } = req.body;
 
   const newItem = await Order.findOneAndUpdate(
@@ -65,4 +65,29 @@ const addItemsToOrder = asyncHandler(async (req, res) => {
   }
 });
 
-export { makeOrder, addItemsToOrder };
+const deleteItemInOrder = asyncHandler(async (req, res) => {
+  const { _id, name, qty, image, price } = req.body;
+
+  const itemToDelete = await Order.findOneAndDelete(
+    { _id },
+    {
+      orderItems: {
+        // item_id,
+        name,
+        qty,
+        image,
+        price,
+      },
+    }
+  );
+
+  const updatedOrderItems = await Order.save();
+  if (updatedOrderItems) {
+    res.status(201).json(updatedOrderItems);
+  } else {
+    res.status(400);
+    throw new Error("Unable to delete item.");
+  }
+});
+
+export { makeOrder, addItemToOrder, deleteItemInOrder };

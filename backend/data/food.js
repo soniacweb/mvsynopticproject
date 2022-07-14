@@ -1,4 +1,4 @@
-const food = [
+export const food = [
   {
     dishName: "Korean BBQ Lettuce Wrap",
     image:
@@ -7,6 +7,7 @@ const food = [
     dietryRequirements: "Vegan",
     description:
       "Chicken marinated in delicious guchchang with rice with rice wine vegar",
+    type: "Sides",
     spiceRating: 4,
     price: 10.0,
   },
@@ -17,6 +18,7 @@ const food = [
     allergens: ["gluten", "wheat", "nuts"],
     dietryRequirements: "Vegan",
     description: "",
+    type: "Main",
     spiceRating: 4,
     price: 10.0,
   },
@@ -28,6 +30,7 @@ const food = [
     dietryRequirements: "Halal",
     description:
       "Try our very own Korean-American hot pot recipe. Korean Army Stew transforms simple everyday ingredients like noodles, kimchi and veggies into a mouth-watering spicy stew. Budae Jjigae is perfect for sharing and entertaining too – if you have a table top cooker, why not cook it all together with friends!",
+    type: "Main",
     spiceRating: 5,
     price: 15.0,
   },
@@ -39,6 +42,7 @@ const food = [
     dietryRequirements: "Halal",
     description:
       "Try this Spicy Beef Soup (Yuk Gae Jang) recipe! IT's a refreshing earthy blend that's slightly spicy, savory, and comforting. You will also taste earthy flavors from the fernbrake and shiitake mushrooms.",
+    type: "Main",
     spiceRating: 5,
     price: 15.0,
   },
@@ -50,16 +54,18 @@ const food = [
     dietryRequirements: "Halal",
     description:
       "Try this Spicy Beef Soup (Yuk Gae Jang) recipe! IT's a refreshing earthy blend that's slightly spicy, savory, and comforting. You will also taste earthy flavors from the fernbrake and shiitake mushrooms.",
+    type: "Main",
     spiceRating: 5,
     price: 15.0,
   },
   {
     dishName: "Kimchi Fried Rice",
     image:
-      "https://www.cookerru.com/wp-content/uploads/2019/11/japchae-feature-1-web-1.jpg",
+      "http://1.bp.blogspot.com/-eHktfypp18c/T-cDR3AZ_aI/AAAAAAAAB1Q/kbjx4nTsTng/s1600/IMG_6264.JPG",
     allergens: ["gluten", "wheat", "nuts"],
     dietryRequirements: "Halal",
     description: "kimchi fried rice",
+    type: "Sides",
     spiceRating: 5,
     price: 15.0,
   },
@@ -70,8 +76,9 @@ const food = [
     allergens: ["gluten", "wheat", "nuts"],
     dietryRequirements: "Halal",
     description: "kimchi fried rice",
+    type: "Sides",
     spiceRating: 5,
-    price: 15.0,
+    price: 7.0,
   },
   {
     dishName: "Bibibap",
@@ -80,8 +87,9 @@ const food = [
     allergens: ["gluten", "wheat", "nuts"],
     dietryRequirements: "Halal",
     description: "Mixed Rice Bowl with Beef",
+    type: "Main",
     spiceRating: 5,
-    price: 17.0,
+    price: 12.0,
   },
   {
     dishName: "Bibibap - Vegetarian",
@@ -89,7 +97,8 @@ const food = [
       "https://www.thespruceeats.com/thmb/bgAYfy_yX7cKN5FoPSVNvetYaXU=/3714x2089/smart/filters:no_upscale()/classic-korean-bibimbap-recipe-2118765-hero-01-091c0e0f8c20426d8f70747955efa61d.jpg",
     allergens: ["gluten", "wheat", "nuts"],
     dietryRequirements: "Vegetarian",
-    description: "Mixed Rice Bowl with Beef",
+    description: "Mixed Rice",
+    type: "Main",
     spiceRating: 5,
     price: 17.0,
   },
@@ -100,7 +109,74 @@ const food = [
     allergens: ["gluten", "wheat", "nuts"],
     dietryRequirements: "Vegan",
     description: "Mixed Rice Bowl with Beef",
+    type: "Main",
     spiceRating: 5,
     price: 17.0,
+  },
+  {
+    dishName: "Bolgogi- Beef",
+    image:
+      "https://mykoreankitchen.com/wp-content/uploads/2018/12/0.-Bulgogi-Korean-BBQ-Beef.jpg",
+    allergens: ["gluten", "wheat", "nuts"],
+    dietryRequirements: "Kosher, Halal",
+    description: "Simply beautiful cuts of Beef - 1 portion",
+    type: "Main",
+    spiceRating: 5,
+    price: 17.0,
+  },
+  {
+    dishName: "Beef Rice Bowl",
+    image:
+      "https://www.elmundoeats.com/wp-content/uploads/2019/05/Korean-Style-BBQ-Beef-Bulgogi.jpg",
+    allergens: ["gluten", "wheat", "nuts"],
+    dietryRequirements: "Kosher, Halal",
+    description: "White Rice Bowl with delicious strips of Beef",
+    type: "Main",
+    spiceRating: 5,
+    price: 17.0,
+  },
+  {
+    dishName: "Daktwingim Fried Chicken ",
+    image:
+      "https://thewoksoflife.com/wp-content/uploads/2020/10/korean-fried-chicken-16.jpg",
+    allergens: ["gluten", "wheat", "nuts"],
+    dietryRequirements: "Kosher, Halal",
+    description: "Chicken Wings",
+    type: "Sides",
+    spiceRating: 5,
+    price: 9.0,
+  },
+  {
+    dishName: "Daktwingim Fried Chicken with White Rice ",
+    image:
+      "https://easychickenrecipes.com/wp-content/uploads/2022/01/Featured-Korean-Fried-Chicken-1.jpg",
+    allergens: ["gluten", "wheat", "nuts"],
+    dietryRequirements: "Kosher, Halal",
+    description: "Chicken Wings with rice",
+    type: "Main",
+    spiceRating: 5,
+    price: 15.0,
+  },
+  {
+    dishName: "Mixed Huraidu Wings",
+    image:
+      "https://www.sbs.com.au/food/sites/sbs.com.au.food/files/korean-fried-chicken-4-ways.jpg",
+    allergens: ["gluten", "wheat", "nuts"],
+    dietryRequirements: "Kosher, Halal",
+    description: "Chicken Wings Platter",
+    type: "Main",
+    spiceRating: 5,
+    price: 15.0,
+  },
+  {
+    dishName: "Rice",
+    image:
+      "https://www.sbs.com.au/food/sites/sbs.com.au.food/files/korean-fried-chicken-4-ways.jpg",
+    allergens: ["gluten", "wheat", "nuts"],
+    dietryRequirements: "Kosher, Halal",
+    description: "Chicken Wings Platter",
+    type: "Starter",
+    spiceRating: 5,
+    price: 15.0,
   },
 ];

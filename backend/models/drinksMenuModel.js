@@ -12,12 +12,24 @@ const drinksMenuSchema = mongoose.Schema(
     },
     alcoholic: {
       type: Boolean,
-      required: true,
+      required: false,
+    },
+    allergens: {
+      type: Array,
+      required: false,
+    },
+    type: {
+      type: String,
+      required: false,
     },
     price: {
       type: Number,
       required: true,
       default: 0,
+    },
+    image: {
+      type: String,
+      required: false,
     },
   },
   {
