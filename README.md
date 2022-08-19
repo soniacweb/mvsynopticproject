@@ -19,6 +19,14 @@
 - Dotenv
 - Nodemon (hot reloading)
 
+To start the project:
+
+Backend
+`npm run start`
+
+Frontend:
+`npm run start`
+
 # UML
 
 Created a UML diagram to plan out my database:

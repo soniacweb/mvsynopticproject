@@ -4,10 +4,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Navbar from "./components/Navbar.js";
+import Table from "./components/Table";
+
 import Register from "./components/Forms/Registration/Register";
 import Login from "./components/Forms/Login/Login";
 import FoodMenu from "./components/FoodMenu";
 import DrinksMenu from "./components/DrinksMenu";
+import Home from "./components/Home";
+import YourOrder from "./components/YourOrder";
 
 function App() {
   return (
@@ -16,10 +20,13 @@ function App() {
       <Navbar />
 
       <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/table" element={<Table />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/foodmenu" element={<FoodMenu />} />
         <Route path="/drinksmenu" element={<DrinksMenu />} />
+        <Route path="/yourorder" element={<YourOrder />} />
       </Routes>
     </BrowserRouter>
     // </Container>

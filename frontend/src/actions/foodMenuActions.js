@@ -14,7 +14,7 @@ export const listFoodMenu = () => async (dispatch) => {
     dispatch({ type: FOODMENU_LIST_REQUEST });
 
     const { data } = await axios.get("http://localhost:8080/api/mainmenu");
-    console.log(data);
+    // console.log(data);
     dispatch({
       type: FOODMENU_LIST_SUCCESS,
       payload: data,

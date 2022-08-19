@@ -14,7 +14,7 @@ export const listDrinksMenu = () => async (dispatch) => {
     dispatch({ type: DRINKSMENU_LIST_REQUEST });
 
     const { data } = await axios.get("http://localhost:8080/api/drinksmenu");
-    console.log(data);
+    // console.log(data);
     dispatch({
       type: DRINKSMENU_LIST_SUCCESS,
       payload: data,

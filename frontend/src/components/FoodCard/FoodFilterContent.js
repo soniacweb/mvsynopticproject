@@ -1,31 +1,75 @@
-import React from "react";
-import { Typography } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Box,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+  IconButton,
+  Typography,
+  Collapse,
+  CardContent,
+} from "@mui/material";
+import InfoIcon from "@mui/icons-material/Info";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-const FilterComp = ({ data, type }) => {
+import { ExpandMore } from "./FoodCard.styles";
+// masonry
+const FilterComp = ({ data }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpand = () => {
+    console.log("handle expand");
+    setExpanded(!expanded);
+  };
+
   return (
-    <>
-      <Typography>{type}</Typography>
-      {data
-        .filter((dish) => dish.type === type)
-        .map((item) => {
-          return (
-            <>
+    <Box>
+      <h1>Drinks</h1>
+      <ImageList
+        variant="masonry"
+        cols={4}
+        gap={10}
+        sx={{ width: 1600, height: "100%", overflowY: "scroll" }}
+      >
+        {data &&
+          data.map((item) => (
+            <ImageListItem key={item.dishName}>
               <img
-                key={item.dishName}
                 src={item.image}
                 srcSet={item.image}
                 alt={item.dishName}
                 loading="lazy"
-                style={{
-                  display: "block",
-                  //   width: "%",
-                }}
               />
-              <Typography>{item.dishName}</Typography>
-            </>
-          );
-        })}
-    </>
+              <ImageListItemBar
+                title={item.dishName}
+                subtitle={`£${item.price}.00`}
+                actionIcon={
+                  <IconButton
+                    sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                    aria-label={`info about ${item.dishName}`}
+                  >
+                    <InfoIcon />
+                  </IconButton>
+                }
+              />
+              <ExpandMore
+                expand={expanded}
+                onClick={handleExpand}
+                aria-expanded={expanded}
+                aria-label="show more"
+              >
+                <ExpandMoreIcon />
+              </ExpandMore>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography paragraph>{item.allergens}</Typography>
+                  <Typography paragraph>{item.description}</Typography>
+                </CardContent>
+              </Collapse>
+            </ImageListItem>
+          ))}
+      </ImageList>
+    </Box>
   );
 };
 

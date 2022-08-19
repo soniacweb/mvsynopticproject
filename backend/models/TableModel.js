@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 
 const TableSchema = mongoose.Schema(
   {
+    name: {
+      type: String,
+      required: true,
+    },
     spaces: {
       type: Number,
       required: true,

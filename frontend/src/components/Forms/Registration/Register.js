@@ -29,7 +29,7 @@ const Register = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate("/", { replace: true }); // redirecting to home
+      navigate("/table", { replace: true }); // redirecting to home
     }
   }, [userInfo, navigate]);
 

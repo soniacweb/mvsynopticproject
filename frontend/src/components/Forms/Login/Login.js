@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../../actions/userActions";
+import { login, getUserDetails } from "../../../actions/userActions";
 import { Button } from "@mui/material";
 
 import FormContainer from "../FormContainer";
@@ -25,9 +25,9 @@ const Login = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate("/foodmenu", { replace: true }); // redirecting to main menu
+      navigate("/table", { replace: true }); // redirecting to main menu
     }
-  }, [userInfo, navigate]);
+  }, [dispatch, userInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ const Login = () => {
 
   return (
     <FormContainer>
-      <h1>Sign up</h1>
+      <h1>Login</h1>
       {/* {message && <Message>{message}</Message>} */}
       {error && <Message>{error}</Message>}
 
@@ -57,7 +57,7 @@ const Login = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <Button onClick={submitHandler}>Register</Button>
+      <Button onClick={submitHandler}>Login</Button>
     </FormContainer>
   );
 };

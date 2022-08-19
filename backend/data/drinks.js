@@ -3,6 +3,8 @@ export const drinks = [
     drinkName: "Grape Soju",
     description: "lorem",
     alcoholic: true,
+    image:
+      "https://www.nikankitchen.com/Images/Products/lotte-chum-churum-grape-soju-360ml.png",
     type: "Alcoholic",
     price: 10.0,
   },
@@ -10,6 +12,8 @@ export const drinks = [
     drinkName: "Blueberry Soju",
     description: "lorem",
     alcoholic: true,
+    image:
+      "https://d1jdlez3mwxs70.cloudfront.net/media/catalog/product/cache/8da43a31889d10b7ec604fc5c0255c3c/8/8/8801100129422.jpg",
     type: "Alcoholic",
     price: 10.0,
   },
@@ -17,12 +21,17 @@ export const drinks = [
     drinkName: "Strawberry Soju",
     description: "lorem",
     alcoholic: true,
+    image:
+      "https://www.orientalmart.co.uk/images/products/4294/small/1623401203-076754100.jpg",
+    type: "Alcoholic",
     price: 10.0,
   },
   {
     drinkName: "Peach Soju",
     description: "lorem",
     alcoholic: true,
+    image:
+      "https://moorewilsons.co.nz/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/c/h/chumchurum-peach/chumchurum-peach-soju-31.1626151363.jpg",
     type: "Alcoholic",
     price: 10.0,
   },
@@ -30,13 +39,17 @@ export const drinks = [
     drinkName: "Apple Soju",
     description: "lorem",
     alcoholic: true,
+    image:
+      "https://www.orientalmart.co.uk/images/products/2735/1623401172-014392900.jpg",
     type: "Alcoholic",
     price: 10.0,
   },
   {
-    drinkName: "Citrus Soju",
+    drinkName: "Grapefruit Soju",
     description: "lorem",
     alcoholic: true,
+    image:
+      "https://www.nikankitchen.com/Images/Products/jinro-jamonheiseul-grapefruit-soju-360ml.png",
     type: "Alcoholic",
     price: 10.0,
   },
@@ -44,6 +57,8 @@ export const drinks = [
     drinkName: "Heineken",
     description: "lorem",
     alcoholic: true,
+    image:
+      "https://images.wallpapersden.com/image/download/heineken-beer-brand_Z2luaWiUmZqaraWkpJRma21lrWZlamU.jpg",
     type: "Alcoholic",
     price: 10.0,
   },
@@ -51,6 +66,8 @@ export const drinks = [
     drinkName: "Kopparberg",
     description: "lorem",
     alcoholic: true,
+    image:
+      "https://cdn744.pressflex.net/images//20272.photo.2.jpg?m=1613130742",
     type: "Alcoholic",
     price: 10.0,
   },
@@ -58,6 +75,8 @@ export const drinks = [
     drinkName: "Coke",
     description: "lorem",
     alcoholic: false,
+    image:
+      "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGNvY2ElMjBjb2xhfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
     type: "Soft Drinks",
     price: 2.5,
   },
@@ -65,6 +84,8 @@ export const drinks = [
     drinkName: "Diet Coke",
     description: "lorem",
     alcoholic: false,
+    image:
+      "https://www.mashed.com/img/gallery/what-really-happens-to-your-body-when-you-drink-a-diet-coke/l-intro-1655735849.jpg",
     type: "Soft Drinks",
     price: 2.5,
   },
@@ -72,6 +93,8 @@ export const drinks = [
     drinkName: "Sprite",
     description: "lorem",
     alcoholic: false,
+    image:
+      "https://c0.wallpaperflare.com/preview/960/957/124/philippines-zambales-pop-softdrink.jpg",
     type: "Soft Drinks",
     price: 2.5,
   },
@@ -79,6 +102,8 @@ export const drinks = [
     drinkName: "Orange Juice",
     description: "lorem",
     alcoholic: false,
+    image:
+      "https://media.istockphoto.com/photos/shot-of-fresh-orange-juice-in-a-glass-picture-id1225546255?k=20&m=1225546255&s=170667a&w=0&h=EESeBVn7rsU8Fb6IBx8SIFQ_VrgMbbBIJtqFxUFZjVA=",
     type: "Juices",
     price: 4.0,
   },
@@ -86,6 +111,8 @@ export const drinks = [
     drinkName: "Apple Juice",
     description: "lorem",
     alcoholic: false,
+    image:
+      "https://media.istockphoto.com/photos/glass-of-apple-cider-and-fresh-red-apples-picture-id1031164822?k=20&m=1031164822&s=612x612&w=0&h=LiAxVSsHTnQLuUNKa-EWAITAEEGKZJKisyAgGRGS0yc=",
     type: "Juices",
     price: 4.0,
   },
@@ -93,6 +120,8 @@ export const drinks = [
     drinkName: "Apple Aloe Vera Juice",
     description: "lorem",
     alcoholic: false,
+    image:
+      "https://media.istockphoto.com/photos/aloe-vera-drink-picture-id1244678181?k=20&m=1244678181&s=612x612&w=0&h=G9Dgr-WtaxTk72QupkUcCftAgDPv7Cg2tuE7a3t3I1Q=",
     type: "Juices",
     price: 4.0,
   },
@@ -100,6 +129,8 @@ export const drinks = [
     drinkName: "Peach Aloe Vera Juice",
     description: "lorem",
     alcoholic: false,
+    image:
+      "https://media.istockphoto.com/photos/aloe-vera-drink-picture-id1244678181?k=20&m=1244678181&s=612x612&w=0&h=G9Dgr-WtaxTk72QupkUcCftAgDPv7Cg2tuE7a3t3I1Q=",
     type: "Juices",
     price: 4.0,
   },
@@ -137,7 +168,8 @@ export const drinks = [
     alcoholic: false,
     type: "Bubble Tea",
     allergens: "Milk and Soya",
-    image: "https://thefeedfeed.com/ful.filled/homemade-matcha-bubble-tea",
+    image:
+      "https://carmyy.com/wp-content/uploads/2022/01/matcha-bubble-tea-new.jpg",
     price: 4.0,
   },
   {

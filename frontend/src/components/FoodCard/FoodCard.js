@@ -4,7 +4,7 @@ import { MenuContainer } from "./FoodCard.styles";
 
 const FoodCard = ({ children }) => {
   return (
-    <MenuContainer padding="20px">
+    <MenuContainer>
       <Masonry columns={4} spacing={2}>
         {children}
       </Masonry>

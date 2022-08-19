@@ -1,14 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  // MemoryRouter,
-  // Route,
-  // Routes,
-  Link,
-  // matchPath,
-  // useLocation,
-} from "react-router-dom";
-// import { StaticRouter } from "react-router-dom/server";
+import { Link } from "react-router-dom";
 
 import { AppBar, Box, Toolbar, Button, IconButton } from "@mui/material";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -39,15 +31,14 @@ const Navbar = () => {
             <MenuIcon />
           </IconButton>
 
-          <Button color="inherit" to="/foodmenu" component={Link}>
-            Food Menu
-          </Button>
-
-          <Button color="inherit" to="/drinksmenu" component={Link}>
-            Drinks Menu
-          </Button>
-
-          {userInfo ? null : (
+          {/* {userInfo.name !== undefined && <Box>{`Hey, ${userInfo.name}!`}</Box>} */}
+          {userInfo ? (
+            <>
+              <Button color="inherit" onClick={logoutHandler}>
+                Logout
+              </Button>
+            </>
+          ) : (
             <>
               <Button color="inherit" to="/register" component={Link}>
                 Register
@@ -58,13 +49,18 @@ const Navbar = () => {
             </>
           )}
 
-          <Button color="inherit" onClick={logoutHandler}>
-            Logout
+          <Button color="inherit" to="/foodmenu" component={Link}>
+            Food Menu
           </Button>
 
-          {/* <Button color="inherit" to="/login" component={Link}>
-            Login
-          </Button> */}
+          <Button color="inherit" to="/drinksmenu" component={Link}>
+            Drinks Menu
+          </Button>
+          <Box sx={{ flexGrow: 1, justifyContent: "end", textAlign: "right" }}>
+            <Button color="inherit" to="/yourorder" component={Link}>
+              Your Order
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>
