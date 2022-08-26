@@ -24,27 +24,23 @@ const reducer = combineReducers({
   drinksMenu: drinksMenuReducer,
   drinkDetail: drinksMenuDetailsReducer,
 
+  order: orderCreationReducer,
+
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
-
-  order: orderCreationReducer,
 });
 
-// const cartItemsFromStorage = localStorage.getItem("cartItems")
-//   ? JSON.parse(localStorage.getItem("cartItems"))
-//   : [];
-// const faveItemsFromStorage = localStorage.getItem("faveItems")
-//   ? JSON.parse(localStorage.getItem("faveItems"))
-//   : [];
+const orderItemsFromStorage = localStorage.getItem("orderItems")
+  ? JSON.parse(localStorage.getItem("orderItems"))
+  : [];
 
 const userFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : [];
 
 const initialState = {
-  //   cart: { cartItems: cartItemsFromStorage },
-  //   fave: { faveItems: faveItemsFromStorage },
+  order: { orderItems: orderItemsFromStorage },
   userLogin: { userInfo: userFromStorage },
 };
 

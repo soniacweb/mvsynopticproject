@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -13,15 +13,17 @@ const YourOrder = ({ match, location, history }) => {
   const order = useSelector((state) => state.order); // using useselector hook to get items from the state
   const { orderItems } = order;
 
-  // useEffect(() => {
-  //   if (itemId) {
-  //     dispatch(addToOrder(itemId, qty));
-  //   }
-  // }, [dispatch, itemId, qty]);
+  console.log(order);
 
-  // const removeFromYourOrderHandler = (id) => {
-  //   dispatch(removeFromOrder(id));
-  // };
+  useEffect(() => {
+    if (itemId) {
+      dispatch(addToOrder(itemId, qty));
+    }
+  }, [dispatch, itemId, qty]);
+
+  const removeFromYourOrderHandler = (id) => {
+    dispatch(removeFromOrder(id));
+  };
 
   // const checkoutHandler = () => {
   //   history.push("/login?redirect=payment");
@@ -31,14 +33,16 @@ const YourOrder = ({ match, location, history }) => {
   return (
     <Box>
       <h1>Order</h1>
-      {/* {orderItems.length === 0 ? (
-    <Message>
-      Your order is empty <Link to='/'>Go Back</Link>
-    </Message>
-  
-  ) : (
-      {orderItems.map((item) => console.log(item)}
-  )} */}
+      {orderItems.length === 0 ? (
+        <Message>
+          Your order is empty <Link to="/">Go Back</Link>
+        </Message>
+      ) : (
+        orderItems.map((item) => console.log(item))
+        // <Message>
+        //   Your order is empty <Link to="/">Go Back</Link>
+        // </Message>
+      )}
     </Box>
   );
 };

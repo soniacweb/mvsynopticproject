@@ -10,7 +10,9 @@ import {
   CardContent,
 } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
+import AddIcon from "@mui/icons-material/Add";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { addToOrder } from "../../actions/orderActions";
 
 import { ExpandMore } from "./FoodCard.styles";
 // masonry
@@ -44,12 +46,21 @@ const FilterComp = ({ data }) => {
                 title={item.dishName}
                 subtitle={`£${item.price}.00`}
                 actionIcon={
-                  <IconButton
-                    sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-                    aria-label={`info about ${item.dishName}`}
-                  >
-                    <InfoIcon />
-                  </IconButton>
+                  <>
+                    <IconButton
+                      sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                      aria-label={`info about ${item.dishName}`}
+                    >
+                      <InfoIcon />
+                    </IconButton>
+                    <IconButton
+                      sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                      aria-label={`info about ${item.dishName}`}
+                      onClick={() => addToOrder(item.id, 1)}
+                    >
+                      <AddIcon />
+                    </IconButton>
+                  </>
                 }
               />
               <ExpandMore
