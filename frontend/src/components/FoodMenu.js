@@ -32,6 +32,17 @@ const FoodMenu = () => {
       foodMenu.filter((food) => food.type.toLowerCase() === type.toLowerCase())
     );
   };
+  const handleDietry = (e) => {
+    console.log("E", e.target.innerText);
+    let dietryRequirements = e.target.innerText;
+    setFoodList(
+      foodMenu.filter(
+        (food) =>
+          food.dietryRequirements.toLowerCase() ===
+          dietryRequirements.toLowerCase()
+      )
+    );
+  };
 
   return loading ? (
     <Loader />
@@ -46,6 +57,12 @@ const FoodMenu = () => {
         </Button>
         <Button onClick={handleClick} value="Side">
           Sides
+        </Button>
+        <Button onClick={handleDietry} value="Side">
+          Vegan
+        </Button>
+        <Button onClick={handleDietry} value="Side">
+          Halal
         </Button>
       </Stack>
       <FoodCard>{<FoodFilterContent data={foodList} />}</FoodCard>

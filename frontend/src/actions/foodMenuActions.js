@@ -41,6 +41,7 @@ export const listFoodDetails = (id) => async (dispatch) => {
       type: FOODMENU_DETAILS_SUCCESS,
       payload: data,
     });
+    console.log(data);
   } catch (er) {
     dispatch({
       type: FOODMENU_DETAILS_FAIL,

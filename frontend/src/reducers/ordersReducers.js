@@ -5,7 +5,7 @@ import {
   ORDER_REMOVE_SUCCESS,
 } from "../constants/orderConstants";
 
-export const orderCreationReducer = (state = { orderItems: [] }, action) => {
+export const orderCreationReducer = (state = { orderItems: [{}] }, action) => {
   switch (action.type) {
     case ORDER_CREATION_REQUEST:
       return { loading: false, order: action.payload };
@@ -15,13 +15,13 @@ export const orderCreationReducer = (state = { orderItems: [] }, action) => {
     case ORDER_ADD_SUCCESS:
       const item = action.payload;
       const existItem = state.orderItems.find(
-        (x) => x.product === item.product
+        (x) => x.meal === item.meal || x.drink === item.drink
       );
       if (existItem) {
         return {
           ...state,
           orderItems: state.orderItems.map((x) =>
-            x.product === existItem.product ? item : x
+            x.meal === existItem.meal || x.drink === existItem.drink ? item : x
           ),
         };
       } else {
@@ -33,9 +33,7 @@ export const orderCreationReducer = (state = { orderItems: [] }, action) => {
     case ORDER_REMOVE_SUCCESS:
       return {
         ...state,
-        orderItems: state.orderItems.filter(
-          (x) => x.product !== action.payload
-        ),
+        orderItems: state.orderItems.filter((x) => x.meal !== action.payload),
       };
 
     default:

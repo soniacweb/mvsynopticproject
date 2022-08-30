@@ -12,6 +12,7 @@ import FoodMenu from "./components/FoodMenu";
 import DrinksMenu from "./components/DrinksMenu";
 import Home from "./components/Home";
 import YourOrder from "./components/YourOrder";
+import FoodSingle from "./components/FoodSingle";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/foodmenu" element={<FoodMenu />} />
+        <Route path="/mainmenu/:id" element={<FoodSingle />} />
         <Route path="/drinksmenu" element={<DrinksMenu />} />
         <Route path="/yourorder" element={<YourOrder />} />
       </Routes>

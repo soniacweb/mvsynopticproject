@@ -3,6 +3,8 @@ import {
   ORDER_CREATION_SUCCESS,
   ORDER_ADD_SUCCESS,
   ORDER_REMOVE_SUCCESS,
+  ORDER_ITEM_QUANTITY_ADD_SUCCESS,
+  ORDER_ITEM_QUANTITY_REMOVE_SUCCESS,
 } from "../constants/orderConstants";
 import axios from "axios";
 
@@ -17,19 +19,34 @@ export const createOrderAfterTableSelection =
     });
   };
 
-export const addToOrder = (itemId, qty) => async (dispatch, getState) => {
-  const { orderData } = await axios.get(`/api/foodmenu/${itemId}`);
+export const addToOrder = (item, qty) => async (dispatch, getState) => {
+  // const { data } = await axios.get(
+  //   `http://localhost:8080/api/orderItems/${itemId}`
+  // );
+  console.log("hello from addToOrder");
   dispatch({
     type: ORDER_ADD_SUCCESS,
     payload: {
-      itemId: orderData._id,
-      itemName: orderData.dishName,
-      itemImage: orderData.image,
-      itemDescription: orderData.description,
-      itemPrice: orderData.price,
+      meal: item._id,
+      drink: item._id,
+      name: item.dishName,
+      image: item.image,
+      price: item.price,
       qty,
     },
+
+    // payload: item,
+
+    // payload: {
+    //   meal: "219084293085",
+    //   drink: "eiouweoitueiu",
+    //   name: "hello",
+    //   image: "hello2",
+    //   price: 10.0,
+    //   qty: 1,
+    // },
   });
+
   localStorage.setItem(
     "orderItems",
     JSON.stringify(getState().order.orderItems)
@@ -47,3 +64,32 @@ export const removeFromOrder = (itemId) => (dispatch, getState) => {
     JSON.stringify(getState().order.orderItems)
   );
 };
+
+// export const incQty = (itemId) => (dispatch, getState) => {
+//   const item = state.find((item) => item._id === action.payload);
+//   item.quantity++;
+//   dispatch({
+//     type: ORDER_ITEM_QUANTITY_ADD_SUCCESS,
+//     payload: itemId,
+//   });
+//   localStorage.setItem(
+//     "orderItems",
+//     JSON.stringify(getState().order.orderItems)
+//   );
+// };
+
+// export const decQty = (state, action) => {
+//   const item = state.find((item) => item._id === action.payload);
+
+//   dispatch({
+//     type: ORDER_ITEM_QUANTITY_REMOVE_SUCCESS,
+//     payload: itemId,
+//   });
+
+//   if (item.quantity === 1) {
+//     const index = state.findIndex((item) => item._id === action.payload);
+//     state.splice(index, 1);
+//   } else {
+//     item.quantity--;
+//   }
+// };
