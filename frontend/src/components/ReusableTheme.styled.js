@@ -13,13 +13,22 @@ const darkBlueBackground = "#011627";
 
 export const TextContainer = styled(Box)`
   width: 80%;
-  color: white;
-  text-align: center;
-  padding: 1rem;
   margin: 4rem auto;
   font-size: 4rem;
   background-color: ${darkBlueBackground};
   white-space: nowrap;
+`;
+
+export const Text = styled(Typography)`
+  font-size: 3rem;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  overflow: hidden;
+
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    font-size: 1rem;
+  }
 `;
 
 export const OrangeSpan = styled(Box)`
@@ -39,7 +48,7 @@ export const Heading = styled(Typography)`
 `;
 
 export const ImageListContainer = styled(ImageList)`
-  margin: 0 auto;
+  margin: 20px auto;
 `;
 
 // Navbar
@@ -63,4 +72,10 @@ export const ImgLogo = styled("img")`
   ${({ theme }) => theme.breakpoints.down("md")} {
     display: none;
   }
+`;
+
+// Table
+
+export const TableContainer = styled(Box)`
+  display: flex;
 `;

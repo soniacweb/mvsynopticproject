@@ -96,7 +96,7 @@ const DrinksMenu = () => {
                   component="img"
                   // height="194"
                   image={filteredDrink.image}
-                  alt="Paella dish"
+                  alt={filteredDrink.drinkName}
                 />
 
                 <CardActions disableSpacing>

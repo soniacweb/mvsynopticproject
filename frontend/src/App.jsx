@@ -13,7 +13,8 @@ import DrinksMenu from "./components/DrinksMenu";
 import Home from "./components/Home";
 import YourOrder from "./components/YourOrder";
 import FoodSingle from "./components/FoodSingle";
-
+import Footer from "./components/Footer";
+import ContactUs from "./components/ContactUs";
 function App() {
   return (
     // <Container maxWidth="lg">
@@ -29,7 +30,10 @@ function App() {
         <Route path="/mainmenu/:id" element={<FoodSingle />} />
         <Route path="/drinksmenu" element={<DrinksMenu />} />
         <Route path="/yourorder" element={<YourOrder />} />
+        <Route path="/contactus" element={<ContactUs />} />
       </Routes>
+
+      <Footer />
     </BrowserRouter>
     // </Container>
   );
