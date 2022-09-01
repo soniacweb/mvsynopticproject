@@ -7,6 +7,7 @@
 - React (npx create react)
 - Material UI
 - Styled Components
+- emailjs
 
 ### ⚙️ Backend
 
@@ -105,3 +106,9 @@ Order::table_id -- Table::id
 
 
 ```
+
+## Testing my endpoints on Postman
+
+<p align="center">
+<img src="./assets/Postman.png " width="900" />
+</p>

@@ -2,38 +2,64 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import Message from "../components/Message";
-import { addToOrder, removeFromOrder } from "../actions/orderActions";
-import { Box } from "@mui/system";
+// import { addToOrder, removeFromOrder } from "../actions/orderActions";
+import { Box, Grid, Paper } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
-const YourOrder = ({ match, location }) => {
-  const itemId = match.params.id;
-  const qty = location.search ? Number(location.search.split("=")[1]) : 1;
-  const dispatch = useDispatch();
-  const order = useSelector((state) => state.order); // using useselector hook to get items from the state
-  const { orderItems } = order;
+const YourOrder = ({ itemId, location }) => {
+  // const itemId = match.params.id;
+  // const qty = location.search ? Number(location.search.split("=")[1]) : 1;
+  // const dispatch = useDispatch();
+  const orderList = useSelector((state) => {
+    console.log("state", state);
+    return state.orderItems;
+  }); // using useselector hook to get items from the state
+  console.log("orderlisttt", orderList);
 
-  console.log(order);
+  // const { orderItems } = order;
 
-  useEffect(() => {
-    if (itemId) {
-      dispatch(addToOrder(itemId, qty));
-    }
-  }, [dispatch, itemId, qty]);
+  // console.log(orderItems);
 
-  const removeFromYourOrderHandler = (id) => {
-    dispatch(removeFromOrder(id));
-  };
+  // useEffect(() => {
+  //   if (itemId) {
+  //     dispatch(addToOrder(itemId, qty));
+  //   }
+  // }, [dispatch, itemId, qty]);
+
+  // const removeFromYourOrderHandler = (id) => {
+  //   dispatch(removeFromOrder(id));
+  // };
 
   // const checkoutHandler = () => {
   //   history.push("/login?redirect=payment");
   // };
 
-  console.log(orderItems);
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  }));
+
   return (
     <Box>
       <h1>Order</h1>
-      {orderItems.length === 0 ? (
+      <Grid container spacing={2} m="0 auto">
+        <Grid item xs={9} md={4} lg={10}>
+          <Item>xs=9 md=8</Item>
+        </Grid>
+        <Grid item xs={9} md={4}>
+          <Item>xs=6 md=4</Item>
+        </Grid>
+        <Grid item xs={9} md={4}>
+          <Item>xs=6 md=4</Item>
+        </Grid>
+        <Grid item xs={9} md={8}>
+          <Item>xs=6 md=8</Item>
+        </Grid>
+      </Grid>
+      {/* {orderItems.length === 0 ? (
         <Message>
           Your order is empty <Link to="/">Go Back</Link>
         </Message>
@@ -44,48 +70,9 @@ const YourOrder = ({ match, location }) => {
               <p>{item.dishName}</p>
               <p>{item.price}</p>
             </>
-            // <Grid item xs={8}>
-            //   <DrinksCard sx={{ maxWidth: 345 }}>
-            //     <CardHeader
-            //       action={
-            //         <IconButton aria-label="allergens">
-            //           <MedicationLiquidIcon />
-            //         </IconButton>
-            //       }
-            //       title={item.drinkName}
-            //       subheader={`Contains ${item.allergens}`}
-            //     />
-            //     <CardMedia
-            //       component="img"
-            //       // height="194"
-            //       image={item.image}
-            //       alt="Paella dish"
-            //     />
-
-            //     <CardActions disableSpacing>
-            //       <IconButton aria-label="Add to Table Order">
-            //         <TableRestaurantIcon />
-            //       </IconButton>
-
-            //       <ExpandMore
-            //         expand={expanded}
-            //         onClick={handleExpandClick}
-            //         aria-expanded={expanded}
-            //         aria-label="show more"
-            //       >
-            //         <ExpandMoreIcon />
-            //       </ExpandMore>
-            //     </CardActions>
-            //     <Collapse in={expanded} timeout="auto" unmountOnExit>
-            //       <CardContent>
-            //         <Typography paragraph>{item.description}</Typography>
-            //       </CardContent>
-            //     </Collapse>
-            //   </DrinksCard>
-            // </Grid>
           );
         })
-      )}
+      )} */}
     </Box>
   );
 };

@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 // import users from "./data/users.js";
 import { food } from "./data/food.js";
 import { drinks } from "./data/drinks.js";
+import { tables } from "./data/table.js";
 
 import User from "./models/userModel.js";
 import FoodMenu from "./models/foodMenuModel.js";
@@ -38,8 +39,13 @@ const importData = async () => {
       return { ...drink };
     });
 
+    const sampleTable = tables.map((table) => {
+      return { ...table };
+    });
+
     await FoodMenu.insertMany(sampleFoodMenu);
     await DrinksMenu.insertMany(sampleDrinksMenu);
+    await Table.insertMany(sampleTable);
     // console.log("data imported".green.inverse);
     process.exit();
   } catch (error) {

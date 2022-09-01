@@ -1,15 +1,15 @@
 import express from "express";
 import {
-  getAllTables,
-  getDrinksMenu,
-} from "../controllers/drinksMenuController.js";
+  fetchAllTables,
+  fetchTableById,
+} from "../controllers/tableController.js";
 
 const router = express.Router();
 
-// get all drinks
-router.route("/tables").get(getAllTables);
+// get all tables
+router.route("/").get(fetchAllTables);
 
-// get single drink
-router.route("/tables/:id").get(getTableById);
+// get single tables
+router.route("/:id").get(fetchTableById);
 
 export default router;

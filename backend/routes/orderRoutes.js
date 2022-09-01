@@ -3,7 +3,7 @@ import {
   makeOrder,
   addItemToOrder,
   deleteItemInOrder,
-  updateOrderQty,
+  // updateOrderQty,
 } from "../controllers/orderController.js";
 import { protect } from "../middleware/authMiddleware.js";
 
@@ -12,10 +12,8 @@ const router = express.Router();
 router
   .route("/order")
   .post(protect, makeOrder)
-  // .route("/orderItems/:id")
-  // .get(protect, addItemToOrder)
   .put(protect, addItemToOrder)
-  .put(protect, updateOrderQty)
+  // .put(protect, updateOrderQty)
   .delete(protect, deleteItemInOrder);
 
 export default router;

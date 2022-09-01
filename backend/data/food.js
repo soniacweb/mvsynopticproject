@@ -748,18 +748,6 @@ export const food = [
     inStock: 2,
   },
   {
-    dishName: "Coleslaw",
-    image:
-      "https://skinnyms.com/wp-content/uploads/2017/03/Creamy-Southern-Style-Coleslaw-Recipe-750x498.jpg",
-    allergens: ["gluten", "wheat", "nuts"],
-    dietryRequirements: "Vegan",
-    description: "lorem ipsum",
-    type: "Sides",
-    spiceRating: 1,
-    price: 2.5,
-    inStock: 32,
-  },
-  {
     dishName: "Beans",
     image:
       "https://www.thecookierookie.com/wp-content/uploads/2018/10/white-beans-tomatoes-garlic-4-of-6.jpg",
@@ -770,5 +758,17 @@ export const food = [
     spiceRating: 1,
     price: 1.99,
     inStock: 15,
+  },
+  {
+    dishName: "Coleslaw",
+    image:
+      "https://skinnyms.com/wp-content/uploads/2017/03/Creamy-Southern-Style-Coleslaw-Recipe-750x498.jpg",
+    allergens: ["gluten", "wheat", "nuts"],
+    dietryRequirements: "Vegan",
+    description: "lorem ipsum",
+    type: "Sides",
+    spiceRating: 1,
+    price: 2.5,
+    inStock: 32,
   },
 ];

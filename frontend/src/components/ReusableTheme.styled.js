@@ -1,5 +1,16 @@
-import { Box, Typography, ImageList, Button, styled } from "@mui/material";
+import {
+  Box,
+  Typography,
+  ImageList,
+  Button,
+  Container,
+  styled,
+  Card,
+  TextField,
+  Alert,
+} from "@mui/material";
 import { createTheme } from "@mui/material/styles";
+// import { createGlobalStyle } from "styled-components";
 
 const theme = createTheme();
 
@@ -10,6 +21,16 @@ const whiteFont = "#fdfffc";
 // backgrounds
 const blueBackground = "#2ec4b6";
 const darkBlueBackground = "#011627";
+const whiteBackground = "#fdfffc";
+
+// export const DynamicContainer = createGlobalStyle`
+//   body {
+//     background-color: ${(props) =>
+//       props.darkBlueBackground
+//         ? `${darkBlueBackground}`
+//         : `${whiteBackground}`};
+//   }
+// `;
 
 export const TextContainer = styled(Box)`
   width: 80%;
@@ -74,8 +95,56 @@ export const ImgLogo = styled("img")`
   }
 `;
 
+export const FooterStyle = styled("footer")`
+  position: bottom;
+  width: 100%;
+  /* bottom: 0;
+  left: 0; */
+  background-color: ${orangeFont};
+  color: ${whiteFont};
+
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    height: 100px;
+  }
+`;
+
 // Table
 
 export const TableContainer = styled(Box)`
   display: flex;
+`;
+
+// Contact Form
+
+export const YellowButton = styled(Button)`
+  background-color: ${orangeFont};
+`;
+
+export const BlueContainer = styled(Container)`
+  /* background-color: ${darkBlueBackground}; */
+  /* color: ${whiteFont}; */
+`;
+
+export const BlueCard = styled(Card)`
+  /* background-color: ${darkBlueBackground}; */
+`;
+
+export const WhiteTextField = styled(TextField)`
+  /* background-color: ${whiteFont}; */
+`;
+
+export const ContactUsTitle = styled(Typography)`
+  /* color: ${whiteFont}; */
+  font-weight: 500;
+`;
+
+export const ContactUsSubtitle = styled(Typography)`
+  /* color: ${whiteFont}; */
+  font-weight: 500;
+`;
+
+// Alertt
+
+export const AlertStyled = styled(Alert)`
+  margin-bottom: 10px;
 `;

@@ -12,12 +12,12 @@ import FoodMenu from "./components/FoodMenu";
 import DrinksMenu from "./components/DrinksMenu";
 import Home from "./components/Home";
 import YourOrder from "./components/YourOrder";
-import FoodSingle from "./components/FoodSingle";
 import Footer from "./components/Footer";
 import ContactUs from "./components/ContactUs";
+import Search from "./components/Search";
+
 function App() {
   return (
-    // <Container maxWidth="lg">
     <BrowserRouter>
       <Navbar />
 
@@ -27,15 +27,14 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/foodmenu" element={<FoodMenu />} />
-        <Route path="/mainmenu/:id" element={<FoodSingle />} />
         <Route path="/drinksmenu" element={<DrinksMenu />} />
         <Route path="/yourorder" element={<YourOrder />} />
         <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
 
       <Footer />
     </BrowserRouter>
-    // </Container>
   );
 }
 

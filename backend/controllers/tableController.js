@@ -1,12 +1,12 @@
 import asyncHandler from "express-async-handler";
 import Table from "../models/tableModel.js";
 
-const getAllTables = asyncHandler(async (req, res) => {
+const fetchAllTables = asyncHandler(async (req, res) => {
   const tables = await Table.find({});
   res.json(tables);
 });
 
-const getTableById = asyncHandler(async (req, res) => {
+const fetchTableById = asyncHandler(async (req, res) => {
   const table = await Table.findById(req.params.id);
 
   if (table) {
@@ -17,4 +17,4 @@ const getTableById = asyncHandler(async (req, res) => {
   }
 });
 
-export { getAllTables, getTableById };
+export { fetchAllTables, fetchTableById };

@@ -2,7 +2,6 @@ import React from "react";
 import { TextContainer, Text, OrangeSpan } from "./ReusableTheme.styled";
 import HeroImage from "./LazyHero/HeroImage";
 import QuiltedImageList from "./reusableComponents/ReusableImageList";
-import { Typography } from "@mui/material";
 
 const Home = () => {
   return (

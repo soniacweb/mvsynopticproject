@@ -38,18 +38,19 @@ const makeOrder = asyncHandler(async (req, res) => {
 });
 
 const addItemToOrder = asyncHandler(async (req, res) => {
-  const { _id, name, qty, image, price } = req.body;
+  const { orderId, itemObject, qty } = req.body;
   console.log("hello", req);
+
   const newItem = await Order.findOneAndUpdate(
-    { _id },
+    { _id: orderId },
     {
       $push: {
-        orderItems: {
-          name,
-          qty,
-          image,
-          price,
-        },
+        orderItems: [
+          {
+            ...itemObject,
+            qty,
+          },
+        ],
       },
     }
   );
@@ -65,7 +66,7 @@ const addItemToOrder = asyncHandler(async (req, res) => {
 });
 
 const deleteItemInOrder = asyncHandler(async (req, res) => {
-  const { _id, name, qty, image, price } = req.body;
+  const { _id, qty } = req.body;
 
   const itemToDelete = await Order.findOneAndDelete(
     { _id },

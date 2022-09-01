@@ -1,57 +1,102 @@
 import {
   ORDER_CREATION_REQUEST,
   ORDER_CREATION_SUCCESS,
+  ORDER_ADD_REQUEST,
   ORDER_ADD_SUCCESS,
+  ORDER_ADD_FAIL,
   ORDER_REMOVE_SUCCESS,
-  ORDER_ITEM_QUANTITY_ADD_SUCCESS,
-  ORDER_ITEM_QUANTITY_REMOVE_SUCCESS,
 } from "../constants/orderConstants";
 import axios from "axios";
 
 export const createOrderAfterTableSelection =
-  (userID, tableNum) => async (dispatch) => {
-    dispatch({
-      type: ORDER_CREATION_REQUEST,
-    });
-    dispatch({
-      type: ORDER_CREATION_SUCCESS,
-      payload: { user: userID, table: tableNum, orderItems: [] },
-    });
+  (userID, tableId) => async (dispatch, getState) => {
+    try {
+      console.log("hello from create order after table action!");
+      dispatch({
+        type: ORDER_CREATION_REQUEST,
+      });
+      dispatch({
+        type: ORDER_CREATION_SUCCESS,
+        payload: { user: userID, table: tableId, orderItems: [] },
+      });
+
+      // destructure from getstate to access user details
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      const { data } = await axios.post(
+        "http://localhost:8080/api/order",
+        { user: userID, table: tableId },
+        config
+      );
+
+      console.log("data", data);
+
+      dispatch({
+        type: ORDER_ADD_SUCCESS,
+        payload: data,
+      });
+
+      localStorage.setItem("orderItems", JSON.stringify(data));
+    } catch (e) {
+      console.log(e);
+    }
   };
 
-export const addToOrder = (item, qty) => async (dispatch, getState) => {
-  // const { data } = await axios.get(
-  //   `http://localhost:8080/api/orderItems/${itemId}`
-  // );
-  console.log("hello from addToOrder");
-  dispatch({
-    type: ORDER_ADD_SUCCESS,
-    payload: {
-      meal: item._id,
-      drink: item._id,
-      name: item.dishName,
-      image: item.image,
-      price: item.price,
-      qty,
-    },
+export const addToOrder =
+  (orderId, itemObject, qty) => async (dispatch, getState) => {
+    console.log("hello from addtocart", orderId);
+    try {
+      dispatch({
+        type: ORDER_ADD_REQUEST,
+      });
 
-    // payload: item,
+      // destructure from getstate to access user details
+      const {
+        // orderItems,
+        // foodMenu,
+        userLogin: { userInfo },
+      } = getState();
 
-    // payload: {
-    //   meal: "219084293085",
-    //   drink: "eiouweoitueiu",
-    //   name: "hello",
-    //   image: "hello2",
-    //   price: 10.0,
-    //   qty: 1,
-    // },
-  });
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
 
-  localStorage.setItem(
-    "orderItems",
-    JSON.stringify(getState().order.orderItems)
-  );
-};
+      // if the order id exists, push to that orderitem array matching order id
+
+      if (orderId) {
+        const { data } = await axios.put(
+          "http://localhost:8080/api/order",
+          { orderId, itemObject, qty },
+          config
+        );
+        dispatch({
+          type: ORDER_ADD_SUCCESS,
+          payload: data,
+        });
+        localStorage.setItem("orderItems", JSON.stringify(data));
+      }
+    } catch (error) {
+      dispatch({
+        type: ORDER_ADD_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 export const removeFromOrder = (itemId) => (dispatch, getState) => {
   dispatch({

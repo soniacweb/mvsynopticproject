@@ -9,6 +9,8 @@ import FormContainer from "../FormContainer";
 import Inputfield from "../../reusableComponents/Inputfield";
 import Message from "../../Message";
 // import Loader from "../components/Loader";
+import AlertComponent from "../../reusableComponents/Alert";
+import HeroImage from "../../LazyHero/HeroImage";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -44,63 +46,86 @@ const Register = () => {
   };
 
   return (
-    <FormContainer>
-      <h1>Sign up</h1>
-      {message && <Message>{message}</Message>}
-      {error && <Message>{error}</Message>}
-      <Inputfield
-        htmlFor={"name"}
-        label={"Name"}
-        id={"name"}
-        aria={"name"}
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <Inputfield
-        htmlFor={"email"}
-        label={"Email address"}
-        id={"email"}
-        aria={"email"}
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <FormHelperText id="my-helper-text">
-        We'll never share your email.
-      </FormHelperText>
-      <Inputfield
-        htmlFor={"birthday"}
-        label={"Birthday"}
-        id={"birthday"}
-        aria={"birthday"}
-        value={birthday}
-        onChange={(e) => setBirthday(e.target.value)}
+    <>
+      <HeroImage
+        src={
+          "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2274&q=80"
+        }
+        heading={"Login"}
       />
 
-      <Inputfield
-        htmlFor={"password"}
-        label={"Password"}
-        id={"password"}
-        aria={"password"}
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <Inputfield
-        htmlFor={"confirmPassword"}
-        label={" Confirm Password"}
-        id={"confirmPassword"}
-        aria={"confirm password"}
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
-      />
+      <FormContainer>
+        <h1>Sign up</h1>
 
-      <Button onClick={submitHandler}>Register</Button>
-      <FormHelperText id="my-helper-text">
-        Have an Account?{" "}
-        <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
-          Login
-        </Link>
-      </FormHelperText>
-    </FormContainer>
+        {message && <Message>{message}</Message>}
+        {error && (
+          <AlertComponent
+            severity="error"
+            message="Woops, it looks like something went wrong!"
+            onClose={() => userInfo}
+          />
+        )}
+
+        <Inputfield
+          m={2}
+          htmlFor={"name"}
+          label={"Name"}
+          id={"name"}
+          aria={"name"}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <Inputfield
+          m={2}
+          htmlFor={"email"}
+          label={"Email address"}
+          id={"email"}
+          aria={"email"}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <FormHelperText id="my-helper-text">
+          We'll never share your email.
+        </FormHelperText>
+        <Inputfield
+          m={2}
+          htmlFor={"birthday"}
+          label={"Birthday"}
+          id={"birthday"}
+          aria={"birthday"}
+          value={birthday}
+          onChange={(e) => setBirthday(e.target.value)}
+        />
+        <Inputfield
+          m={2}
+          htmlFor={"password"}
+          label={"Password"}
+          id={"password"}
+          aria={"password"}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Inputfield
+          m={2}
+          htmlFor={"confirmPassword"}
+          label={" Confirm Password"}
+          id={"confirmPassword"}
+          aria={"confirm password"}
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <Button onClick={submitHandler}>Register</Button>
+        <FormHelperText
+          id="my-helper-text"
+          style={{ backgroundColor: "#ff9f1c", margin: "10px auto" }}
+        >
+          Have an Account?{" "}
+          <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
+            Login
+          </Link>
+        </FormHelperText>
+      </FormContainer>
+    </>
   );
 };
 

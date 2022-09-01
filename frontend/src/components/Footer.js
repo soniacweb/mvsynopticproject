@@ -5,17 +5,12 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import Instagram from "@mui/icons-material/Instagram";
+import { FooterStyle } from "./ReusableTheme.styled";
 
 const Footer = () => {
   return (
-    <footer>
-      <Box
-        px={{ xs: 3, md: 10 }}
-        py={{ xs: 5, md: 10 }}
-        bgcolor="#ff9f1c"
-        color="white"
-        fontWeight="600"
-      >
+    <FooterStyle>
+      <Box px={{ xs: 3, md: 10 }} py={{ xs: 5, md: 10 }} fontWeight="600">
         <Container maxWidth="lg">
           <Grid container spacing={5}>
             <Grid item xs={12} sm={4}>
@@ -24,7 +19,7 @@ const Footer = () => {
               </Box>
 
               <Box>
-                <Link href="/" color="inherit">
+                <Link href="/contactus" color="inherit">
                   Contact
                 </Link>
               </Box>
@@ -92,7 +87,7 @@ const Footer = () => {
           </Box>
         </Container>
       </Box>
-    </footer>
+    </FooterStyle>
   );
 };
 

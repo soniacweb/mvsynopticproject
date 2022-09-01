@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FormContainer from "./Forms/FormContainer";
 import {
   Box,
@@ -15,16 +15,34 @@ import { createOrderAfterTableSelection } from "../actions/orderActions";
 import { useNavigate } from "react-router-dom";
 import HeroImage from "./LazyHero/HeroImage";
 import { TableContainer } from "./ReusableTheme.styled";
+import { fetchAllTables } from "../actions/tablesActions";
 
 const Table = () => {
-  const [seatNumber, setSeatNumber] = useState(2);
+  const [tableId, setTableId] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userId = useSelector((state) => state.userLogin.userInfo._id);
+  const [tablesList, setTablesList] = useState([]);
+
+  const tableList = useSelector((state) => state.tables);
+  const { loading, error, tables } = tableList;
+
+  useEffect(() => {
+    dispatch(fetchAllTables());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setTablesList(tables);
+  }, [tables]);
+
+  console.log("tables list", tablesList);
+  console.log("tableId", tableId);
+
+  // console.log("tables list id", tablesList[0]._id);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(createOrderAfterTableSelection(userId, seatNumber));
+    dispatch(createOrderAfterTableSelection(userId, tableId));
     // redirect to menu
     navigate("/foodmenu", { replace: true }); // redirecting to home
   };
@@ -39,7 +57,10 @@ const Table = () => {
       />
       <TableContainer>
         <FormContainer>
-          <Typography>Hey there! How many seats do you need?</Typography>
+          <Typography>
+            Hey there! How many seats do you need? Select our funky tables from
+            the options below!
+          </Typography>
           <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
               <InputLabel variant="standard" htmlFor="uncontrolled-native">
@@ -51,12 +72,14 @@ const Table = () => {
                   name: "Let us know!",
                   id: "uncontrolled-native",
                 }}
-                onChange={(e) => setSeatNumber(e.target.value)}
+                onChange={(e) => setTableId(e.target.value)}
               >
-                {[2, 3, 4, 5, 6, 7].map((option) => {
+                {tablesList.map((option) => {
                   return (
-                    <option value={option}>
-                      {option < 7 ? option : `${option}+`}
+                    <option value={option._id}>
+                      {option.spaces < 7
+                        ? `${option.name} - ${option.spaces}`
+                        : `${option.name} - ${option.spaces}+`}
                     </option>
                   );
                 })}

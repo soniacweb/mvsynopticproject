@@ -7,60 +7,6 @@ import {
   ImgLogo,
 } from "./ReusableTheme.styled";
 import { logout } from "../actions/userActions";
-// const Navbar = () => {
-
-//   return (
-//     <Box sx={{ flexGrow: 1 }}>
-//       <AppBar position="static" style={{ background: "#011627" }}>
-//         <Toolbar>
-//           <IconButton
-//             size="large"
-//             edge="start"
-//             color="inherit"
-//             aria-label="menu"
-//             sx={{ mr: 2 }}
-//           >
-//             <MenuIcon />
-//           </IconButton>
-
-//           {/* {userInfo.name !== undefined && <Box>{`Hey, ${userInfo.name}!`}</Box>} */}
-//           {userInfo ? (
-//             <>
-//               <Button color="inherit" onClick={logoutHandler}>
-//                 Logout
-//               </Button>
-//             </>
-//           ) : (
-//             <>
-//               <Button color="inherit" to="/register" component={Link}>
-//                 Register
-//               </Button>{" "}
-//               <Button color="inherit" to="/login" component={Link}>
-//                 Login
-//               </Button>
-//             </>
-//           )}
-
-//           <Button color="inherit" to="/foodmenu" component={Link}>
-//             Food Menu
-//           </Button>
-
-//           <Button color="inherit" to="/drinksmenu" component={Link}>
-//             Drinks Menu
-//           </Button>
-//           <Box sx={{ flexGrow: 1, justifyContent: "end", textAlign: "right" }}>
-//             <Button color="inherit" to="/yourorder" component={Link}>
-//               Your Order
-//             </Button>
-//           </Box>
-//         </Toolbar>
-//       </AppBar>
-//     </Box>
-//   );
-// };
-
-// export default Navbar;
-
 import {
   AppBar,
   Box,
@@ -69,12 +15,10 @@ import {
   Typography,
   Menu,
   Container,
-  Button,
 } from "@mui/material";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);

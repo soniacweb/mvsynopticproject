@@ -7,7 +7,7 @@ import userRoutes from "./routes/userRoutes.js";
 import foodMenuRoutes from "./routes/foodMenuRoutes.js";
 import drinksMenuRoutes from "./routes/drinksMenuRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
-
+import tableRoutes from "./routes/tableRoutes.js";
 import morgan from "morgan";
 import cors from "cors";
 
@@ -31,10 +31,10 @@ app.use(express.json()); // to parse req.body for post requests
 app.use("/api", foodMenuRoutes);
 app.use("/api", drinksMenuRoutes);
 app.use("/api/users", userRoutes);
-app.use("/", orderRoutes);
+app.use("/api", orderRoutes);
 
 // app.use("/api/location", locationRoutes);
-// app.use("/api/tables", tableRoutes);
+app.use("/api/tables", tableRoutes);
 
 //PORT
 

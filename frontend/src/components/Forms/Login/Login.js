@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { login, getUserDetails } from "../../../actions/userActions";
+import { login } from "../../../actions/userActions";
 import { Button } from "@mui/material";
 import HeroImage from "../../LazyHero/HeroImage";
 import FormContainer from "../FormContainer";

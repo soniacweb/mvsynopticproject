@@ -16,6 +16,7 @@ import {
   userDetailsReducer,
 } from "./reducers/userReducers";
 
+import { tableReducer } from "./reducers/tableReducers";
 import { orderCreationReducer } from "./reducers/ordersReducers";
 
 const reducer = combineReducers({
@@ -23,12 +24,11 @@ const reducer = combineReducers({
   mealDetail: foodMenuDetailsReducer,
   drinksMenu: drinksMenuReducer,
   drinkDetail: drinksMenuDetailsReducer,
-
-  order: orderCreationReducer,
-
+  orderItems: orderCreationReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
+  tables: tableReducer,
 });
 
 const orderItemsFromStorage = localStorage.getItem("orderItems")
@@ -40,7 +40,7 @@ const userFromStorage = localStorage.getItem("userInfo")
   : [];
 
 const initialState = {
-  order: { orderItems: orderItemsFromStorage },
+  orderItems: { orderItems: orderItemsFromStorage },
   userLogin: { userInfo: userFromStorage },
 };
 

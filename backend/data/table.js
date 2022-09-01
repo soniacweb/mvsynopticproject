@@ -1,10 +1,10 @@
-const tables = [
+export const tables = [
   {
-    name: "Gangnam ",
+    name: "Rings of Power",
     spaces: "2",
   },
   {
-    name: "Dynamite",
+    name: "Pulp Fiction",
     spaces: "3",
   },
   {
@@ -12,15 +12,15 @@ const tables = [
     spaces: "4",
   },
   {
-    name: "Descendants of the Sun",
+    name: "Rocky",
     spaces: "5",
   },
   {
-    name: "K-Wave",
+    name: "End Game",
     spaces: "6",
   },
   {
-    name: "K",
+    name: "House of Dragon",
     spaces: "7",
   },
 ];
