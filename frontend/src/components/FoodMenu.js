@@ -4,9 +4,9 @@ import FoodFilterContent from "./FoodCard/FoodFilterContent";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { listFoodMenu } from "../actions/foodMenuActions";
-import { Stack } from "@mui/material";
+import { Stack, Grid } from "@mui/material";
 
-import Button from "@mui/material/Button";
+import { CatButtonStyled } from "./ReusableTheme.styled";
 import Loader from "../components/Loader.js";
 
 const FoodMenu = () => {
@@ -48,24 +48,41 @@ const FoodMenu = () => {
     <Loader />
   ) : (
     <>
-      <Stack direction="row" spacing={2}>
-        <Button onClick={handleClick} value="Main">
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        spacing={{ xs: 1, sm: 2, md: 4 }}
+        m={10}
+      >
+        {/* <Grid item> */}
+        <CatButtonStyled onClick={handleClick} value="Main">
           Main
-        </Button>
-        <Button onClick={handleClick} value="Starter">
+        </CatButtonStyled>
+        {/* </Grid> */}
+        {/* <Grid item> */}
+        <CatButtonStyled onClick={handleClick} value="Starter">
           Starter
-        </Button>
-        <Button onClick={handleClick} value="Side">
+        </CatButtonStyled>
+        {/* </Grid> */}
+        {/* <Grid item> */}
+        <CatButtonStyled onClick={handleClick} value="Side">
           Sides
-        </Button>
-        <Button onClick={handleDietry} value="Side">
+        </CatButtonStyled>
+        {/* </Grid>
+
+        <Grid item xs={6}> */}
+        <CatButtonStyled onClick={handleDietry} value="Side">
           Vegan
-        </Button>
-        <Button onClick={handleDietry} value="Side">
+        </CatButtonStyled>
+        {/* </Grid>
+
+        <Grid item> */}
+        <CatButtonStyled onClick={handleDietry} value="Side">
           Halal
-        </Button>
+        </CatButtonStyled>
+        {/* </Grid> */}
       </Stack>
-      <FoodCard>{<FoodFilterContent data={foodList} />}</FoodCard>
+
+      <FoodFilterContent data={foodList} />
     </>
   );
 };

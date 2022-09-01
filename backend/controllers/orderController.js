@@ -39,7 +39,7 @@ const makeOrder = asyncHandler(async (req, res) => {
 
 const addItemToOrder = asyncHandler(async (req, res) => {
   const { orderId, itemObject, qty } = req.body;
-  console.log("hello", req);
+  console.log("hello addItemToOrder", req);
 
   const newItem = await Order.findOneAndUpdate(
     { _id: orderId },

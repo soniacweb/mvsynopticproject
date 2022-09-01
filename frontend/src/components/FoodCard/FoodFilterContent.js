@@ -1,24 +1,26 @@
 import React from "react";
 import ModalItem from "../Modal";
 import { Box, ImageList } from "@mui/material";
+import { MenuContainer } from "./FoodCard.styles";
 
 const FilterComp = ({ data }) => {
   return (
-    <Box>
-      <h1>Main Menu</h1>
-      <ImageList
-        maxWidth="lg"
-        variant="masonry"
-        cols={4}
-        gap={10}
-        sx={{ width: 1600, height: "100%", overflowY: "scroll" }}
-      >
-        {data &&
-          data.map((item, i) => {
-            return <ModalItem item={item} />;
-          })}
-      </ImageList>
-    </Box>
+    <MenuContainer>
+      <Box>
+        <h1>Main Menu</h1>
+        <ImageList
+          variant="woven"
+          // cols={{ xs: 1, sm: 1, md: 2, lg: 3 }}
+          gap={7}
+          cols={3}
+        >
+          {data &&
+            data.map((item, i) => {
+              return <ModalItem item={item} />;
+            })}
+        </ImageList>
+      </Box>
+    </MenuContainer>
   );
 };
 

@@ -1,15 +1,7 @@
-import React from "react";
-import { Masonry } from "@mui/lab";
-import { MenuContainer } from "./FoodCard.styles";
+// import React from "react";
 
-const FoodCard = ({ children }) => {
-  return (
-    <MenuContainer>
-      <Masonry columns={4} spacing={2}>
-        {children}
-      </Masonry>
-    </MenuContainer>
-  );
-};
+// const FoodCard = ({ children }) => {
+//   return <MenuContainer>{children}</MenuContainer>;
+// };
 
-export default FoodCard;
+// export default FoodCard;

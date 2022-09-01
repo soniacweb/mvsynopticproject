@@ -8,7 +8,7 @@ import {
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { listDrinksMenu } from "../actions/drinksMenuActions";
-
+import { CatButtonStyled } from "./ReusableTheme.styled";
 import {
   Button,
   Stack,
@@ -62,20 +62,24 @@ const DrinksMenu = () => {
     <Loader />
   ) : (
     <>
-      <Stack direction="row" spacing={2}>
-        <Button onClick={handleClick} value="Alcoholic">
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        spacing={{ xs: 1, sm: 2, md: 4 }}
+        m={10}
+      >
+        <CatButtonStyled onClick={handleClick} value="Alcoholic">
           Alcoholic
-        </Button>
+        </CatButtonStyled>
 
-        <Button onClick={handleClick} value="Side">
+        <CatButtonStyled onClick={handleClick} value="Side">
           Juices
-        </Button>
-        <Button onClick={handleClick} value="Side">
+        </CatButtonStyled>
+        <CatButtonStyled onClick={handleClick} value="Side">
           Hot Drinks
-        </Button>
-        <Button onClick={handleClick} value="Bubble Tea">
+        </CatButtonStyled>
+        <CatButtonStyled onClick={handleClick} value="Bubble Tea">
           Bubble Tea
-        </Button>
+        </CatButtonStyled>
       </Stack>
       <h1>Drinks</h1>
       <DrinksContainer>

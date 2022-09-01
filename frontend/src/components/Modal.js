@@ -10,6 +10,7 @@ import {
   TextField,
   Modal,
   Button,
+  Stack,
 } from "@mui/material";
 
 import InfoIcon from "@mui/icons-material/Info";
@@ -72,6 +73,11 @@ const ModalItem = ({ item }) => {
   );
 
   return (
+    // <Stack
+    //   direction={{ xs: "column", sm: "column" }}
+    //   spacing={{ xs: 1, sm: 2, md: 4 }}
+
+    // >
     <ImageListItem key={item.dishName}>
       <img
         src={item.image}
@@ -158,6 +164,7 @@ const ModalItem = ({ item }) => {
         </Box>
       </Modal>
     </ImageListItem>
+    // </Stack>
   );
 };
 
