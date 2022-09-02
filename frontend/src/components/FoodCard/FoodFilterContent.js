@@ -1,7 +1,7 @@
 import React from "react";
 import ModalItem from "../Modal";
 import { Box, ImageList } from "@mui/material";
-import { MenuContainer } from "./FoodCard.styles";
+import { MenuContainer } from "../ReusableTheme.styled";
 
 const FilterComp = ({ data }) => {
   return (

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import FoodCard from "./FoodCard/FoodCard";
+// import FoodCard from "./FoodCard/FoodCard";
 import FoodFilterContent from "./FoodCard/FoodFilterContent";
 //redux
 import { useDispatch, useSelector } from "react-redux";

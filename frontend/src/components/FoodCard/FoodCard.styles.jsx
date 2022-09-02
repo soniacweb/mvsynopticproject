@@ -9,8 +9,3 @@ export const Label = styled(Paper)(({ theme }) => ({
   borderBottomLeftRadius: 0,
   borderBottomRightRadius: 0,
 }));
-
-export const MenuContainer = styled(Box)`
-  padding: 20px;
-  /* display: flex; */
-`;

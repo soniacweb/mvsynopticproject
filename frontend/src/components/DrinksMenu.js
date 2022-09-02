@@ -1,32 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {
-  DrinksContainer,
-  ExpandMore,
-  DrinksCard,
-} from "./DrinksCard/DrinksCard.styles";
-
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { listDrinksMenu } from "../actions/drinksMenuActions";
-import { CatButtonStyled } from "./ReusableTheme.styled";
-import {
-  Button,
-  Stack,
-  CardHeader,
-  CardActions,
-  CardContent,
-  Typography,
-  IconButton,
-  CardMedia,
-  Grid,
-  Collapse,
-} from "@mui/material";
-import MedicationLiquidIcon from "@mui/icons-material/MedicationLiquid";
-import TableRestaurantIcon from "@mui/icons-material/TableRestaurant";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { red } from "@mui/material/colors";
+import { MenuContainer, CatButtonStyled } from "./ReusableTheme.styled";
+import { Box, ImageList, Stack } from "@mui/material";
 
 import Loader from "../components/Loader.js";
+import ModalItem from "./Modal";
 
 const DrinksMenu = () => {
   const dispatch = useDispatch();
@@ -82,53 +62,21 @@ const DrinksMenu = () => {
         </CatButtonStyled>
       </Stack>
       <h1>Drinks</h1>
-      <DrinksContainer>
-        {drinksList.map((filteredDrink) => {
-          return (
-            <Grid item xs={8}>
-              <DrinksCard sx={{ maxWidth: 345 }}>
-                <CardHeader
-                  action={
-                    <IconButton aria-label="allergens">
-                      <MedicationLiquidIcon />
-                    </IconButton>
-                  }
-                  title={filteredDrink.drinkName}
-                  subheader={`Contains ${filteredDrink.allergens}`}
-                />
-                <CardMedia
-                  component="img"
-                  // height="194"
-                  image={filteredDrink.image}
-                  alt={filteredDrink.drinkName}
-                />
-
-                <CardActions disableSpacing>
-                  <IconButton aria-label="Add to Table Order">
-                    <TableRestaurantIcon />
-                  </IconButton>
-
-                  <ExpandMore
-                    expand={expanded}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                  >
-                    <ExpandMoreIcon />
-                  </ExpandMore>
-                </CardActions>
-                <Collapse in={expanded} timeout="auto" unmountOnExit>
-                  <CardContent>
-                    <Typography paragraph>
-                      {filteredDrink.description}
-                    </Typography>
-                  </CardContent>
-                </Collapse>
-              </DrinksCard>
-            </Grid>
-          );
-        })}
-      </DrinksContainer>
+      <MenuContainer>
+        <Box>
+          <ImageList
+            variant="woven"
+            // cols={{ xs: 1, sm: 1, md: 2, lg: 3 }}
+            gap={7}
+            cols={3}
+          >
+            {drinksList &&
+              drinksList.map((item, i) => {
+                return <ModalItem item={item} />;
+              })}
+          </ImageList>
+        </Box>
+      </MenuContainer>
     </>
   );
 };

@@ -10,7 +10,6 @@ import {
   TextField,
   Modal,
   Button,
-  Stack,
 } from "@mui/material";
 
 import InfoIcon from "@mui/icons-material/Info";
@@ -121,7 +120,9 @@ const ModalItem = ({ item }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography>{item.dishName}</Typography>
+          <Typography>
+            {item.dishName ? item.dishName : item.drinksName}
+          </Typography>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             May contain:
             {item.allergens.map((allergy, i, arr) =>

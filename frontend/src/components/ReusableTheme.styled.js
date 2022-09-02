@@ -103,9 +103,9 @@ export const FooterStyle = styled("footer")`
   background-color: ${orangeFont};
   color: ${whiteFont};
 
-  ${({ theme }) => theme.breakpoints.down("md")} {
+  /* ${({ theme }) => theme.breakpoints.down("md")} {
     height: 100px;
-  }
+  } */
 `;
 
 // Table
@@ -143,8 +143,25 @@ export const ContactUsSubtitle = styled(Typography)`
   font-weight: 500;
 `;
 
-// Alertt
+// Alert
 
 export const AlertStyled = styled(Alert)`
   margin-bottom: 10px;
+`;
+
+// Category Buttons
+
+export const CatButtonStyled = styled(Button)`
+  background-color: ${blueBackground};
+  border-radius: 0%;
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+`;
+
+// menu container
+
+export const MenuContainer = styled(Box)`
+  padding: 20px;
+  /* display: flex; */
 `;
