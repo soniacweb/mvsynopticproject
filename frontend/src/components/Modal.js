@@ -38,12 +38,20 @@ const ModalItem = ({ item }) => {
 
   // get newly created empty orderItem from store (state) and get the ID
 
-  const order = useSelector((state) => state.orderItems);
-  const { loading, error, orderItems } = order;
+  const orderId = useSelector((state) => state.order.userOrder.order);
+  // const order = useSelector((state) => console.log("state", state));
 
-  if (orderItems) {
-    console.log("order from modal", order);
-  }
+  // const { loading, error, orderItems } = order;
+  // console.log("orderrrr", order);
+  console.log("orderrrr iddd", orderId);
+
+  const handleClick = (item, qty) => {
+    console.log("handleclick running", item, qty);
+    if (orderId) {
+      dispatch(addToOrder(orderId, item, qty));
+      handleClose();
+    }
+  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -61,15 +69,15 @@ const ModalItem = ({ item }) => {
     setQty(Number(qty - 1));
   };
 
-  console.log(
-    "what im passing in",
-    "order ID:",
-    orderItems._id,
-    "item object:",
-    item,
-    "qty:",
-    qty
-  );
+  // console.log(
+  //   "what im passing in",
+  //   "order ID:",
+  //   orderId,
+  //   "item object:",
+  //   item,
+  //   "qty:",
+  //   qty
+  // );
 
   return (
     // <Stack
@@ -152,16 +160,7 @@ const ModalItem = ({ item }) => {
             <RemoveIcon />
           </Button>
 
-          <Button
-            onClick={() => {
-              console.log("add to order from click event");
-              dispatch(addToOrder(order._id, item, qty));
-              handleClose();
-            }}
-            // onClick={() => dispatch(addToOrder(item, qty))}
-          >
-            Add to order
-          </Button>
+          <Button onClick={() => handleClick(item, qty)}>Add to order</Button>
         </Box>
       </Modal>
     </ImageListItem>

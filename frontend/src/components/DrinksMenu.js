@@ -72,7 +72,12 @@ const DrinksMenu = () => {
           >
             {drinksList &&
               drinksList.map((item, i) => {
-                return <ModalItem item={item} />;
+                return (
+                  <ModalItem
+                    key={item.name ? item.dishName : item.dinksName}
+                    item={item}
+                  />
+                );
               })}
           </ImageList>
         </Box>

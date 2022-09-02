@@ -1,24 +1,27 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 // import { addToOrder, removeFromOrder } from "../actions/orderActions";
-import { Box, Grid, Paper } from "@mui/material";
+import { Box, Grid, Paper, Typography, ButtonBase } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
+const Img = styled("img")({
+  margin: "auto",
+  display: "block",
+  maxWidth: "100%",
+  maxHeight: "100%",
+});
+
 const YourOrder = ({ itemId, location }) => {
-  // const itemId = match.params.id;
-  // const qty = location.search ? Number(location.search.split("=")[1]) : 1;
-  // const dispatch = useDispatch();
-  const orderList = useSelector((state) => {
-    console.log("state", state);
-    return state.orderItems;
-  }); // using useselector hook to get items from the state
-  console.log("orderlisttt", orderList);
+  const orderList = useSelector((state) => state.order);
+  const [price, setPrice] = useState();
+  console.log("orderlist", orderList);
 
-  // const { orderItems } = order;
+  const {
+    userOrder: { orderItems },
+  } = orderList;
 
-  // console.log(orderItems);
+  console.log(orderItems);
 
   // useEffect(() => {
   //   if (itemId) {
@@ -43,37 +46,82 @@ const YourOrder = ({ itemId, location }) => {
   }));
 
   return (
-    <Box>
-      <h1>Order</h1>
-      <Grid container spacing={2} m="0 auto">
-        <Grid item xs={9} md={4} lg={10}>
-          <Item>xs=9 md=8</Item>
+    <>
+      {orderItems.map((item) => (
+        <Paper
+          sx={{
+            p: 2,
+            margin: "20px auto",
+            maxWidth: 500,
+            flexGrow: 1,
+            backgroundColor: (theme) =>
+              theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+          }}
+        >
+          <Grid container spacing={2}>
+            <Grid item>
+              <ButtonBase sx={{ width: 128, height: 128 }}>
+                <Img alt={item.disName} src={item.image} />
+              </ButtonBase>
+            </Grid>
+            <Grid item xs={12} sm container>
+              <Grid item xs container direction="column" spacing={2}>
+                <Grid item xs>
+                  <Typography gutterBottom variant="subtitle1" component="div">
+                    {item.disName}
+                  </Typography>
+                  <Typography variant="body2" gutterBottom>
+                    {item.description}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {item.type}
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography sx={{ cursor: "pointer" }} variant="body2">
+                    Remove
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid item>
+                <Typography variant="subtitle1" component="div">
+                  Price: £{item.price}0
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Paper>
+      ))}
+
+      <Paper
+        sx={{
+          p: 2,
+          margin: "20px auto",
+          maxWidth: 500,
+          flexGrow: 1,
+          backgroundColor: (theme) =>
+            theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+        }}
+      >
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm container>
+            <Grid item xs container direction="column" spacing={2}></Grid>
+            <Grid item>
+              <Typography
+                component="div"
+                style={{ margin: "50px auto", fontSize: "20px" }}
+                variant="title"
+              >
+                Total: £
+                {orderItems.reduce(function (accumulator, currentValue) {
+                  return Number(accumulator) + Number(currentValue.price);
+                }, 0)}
+              </Typography>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={9} md={4}>
-          <Item>xs=6 md=4</Item>
-        </Grid>
-        <Grid item xs={9} md={4}>
-          <Item>xs=6 md=4</Item>
-        </Grid>
-        <Grid item xs={9} md={8}>
-          <Item>xs=6 md=8</Item>
-        </Grid>
-      </Grid>
-      {/* {orderItems.length === 0 ? (
-        <Message>
-          Your order is empty <Link to="/">Go Back</Link>
-        </Message>
-      ) : (
-        orderItems.map((item) => {
-          return (
-            <>
-              <p>{item.dishName}</p>
-              <p>{item.price}</p>
-            </>
-          );
-        })
-      )} */}
-    </Box>
+      </Paper>
+    </>
   );
 };
 

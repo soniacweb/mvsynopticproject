@@ -24,23 +24,23 @@ const reducer = combineReducers({
   mealDetail: foodMenuDetailsReducer,
   drinksMenu: drinksMenuReducer,
   drinkDetail: drinksMenuDetailsReducer,
-  orderItems: orderCreationReducer,
+  order: orderCreationReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   tables: tableReducer,
 });
 
-const orderItemsFromStorage = localStorage.getItem("orderItems")
-  ? JSON.parse(localStorage.getItem("orderItems"))
-  : [];
+const orderItemsFromStorage = localStorage.getItem("userOrder")
+  ? JSON.parse(localStorage.getItem("userOrder"))
+  : {};
 
 const userFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : [];
 
 const initialState = {
-  orderItems: { orderItems: orderItemsFromStorage },
+  order: { userOrder: orderItemsFromStorage },
   userLogin: { userInfo: userFromStorage },
 };
 

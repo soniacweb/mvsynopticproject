@@ -7,42 +7,57 @@ import {
   ORDER_REMOVE_SUCCESS,
 } from "../constants/orderConstants";
 
-export const orderCreationReducer = (state = { orderItems: [{}] }, action) => {
+export const orderCreationReducer = (state = { order: [{}] }, action) => {
   switch (action.type) {
     case ORDER_CREATION_REQUEST:
-      return { loading: false, orderItems: action.payload };
+      return { loading: false, userOrder: action.payload };
     case ORDER_CREATION_SUCCESS:
-      return { loading: false, orderItems: action.payload };
-    // case ORDER_ADD_REQUEST:
-    //   return { loading: true };
+      console.log("action payload", action.payload);
+      console.log("stateeee", state);
+      return { loading: false, userOrder: action.payload };
+    case ORDER_ADD_REQUEST:
+      console.log("action payload", action.payload);
+      console.log("stateeee", state.userOrder);
+      return { loading: true, userOrder: state.userOrder };
     case ORDER_ADD_SUCCESS:
-      const itemToAdd = action.payload;
-      console.log("state.orderitems", state.orderItems);
-      console.log("itemtoadd", itemToAdd);
-      const existItem = state.orderItems.find(
-        (itemObject) => itemObject.meal === itemToAdd.meal
-      );
-      console.log("existItem", existItem);
-      if (existItem) {
-        return {
-          ...state,
-          orderItems: state.orderItems.map((itemObject) =>
-            itemObject.meal === existItem.meal ? itemToAdd : itemObject
-          ),
-        };
-      } else {
-        return {
-          ...state,
-          orderItems: [...state.orderItems, itemToAdd],
-        };
-      }
+      // const itemToAdd = action.payload;
+      // console.log("state.orderitems", state.order.userOrder.orderItems);
+      // console.log("itemtoaddddd", itemToAdd._id);
+      // console.log("statttteeee", state);
+
+      // const itemExists = state.order.userOrder.orderItems.find(
+      //   (itemObject) => itemObject.meal === itemToAdd.meal
+      // );
+
+      // console.log("existItem", itemExists);
+
+      // let addingToOrderObject = { ...state, orderId: itemToAdd._id };
+
+      // if (itemExists) {
+      //   addingToOrderObject.order = state.order.userOrder.orderItems.map(
+      //     (itemObject) =>
+      //       itemObject.meal === itemExists.meal ? itemToAdd : itemObject
+      //   );
+      // }
+      // console.log("adding to order object", addingToOrderObject);
+
+      return {
+        loading: false,
+        userOrder: {
+          ...state.userOrder,
+          orderItems: [...state.userOrder.orderItems, action.payload],
+        },
+      };
+    // orderId: itemToAdd._id,
 
     case ORDER_ADD_FAIL:
       return { loading: false, error: action.payload };
     case ORDER_REMOVE_SUCCESS:
       return {
         ...state,
-        orderItems: state.orderItems.filter((x) => x.meal !== action.payload),
+        order: state.order.userOrder.orderItems.filter(
+          (x) => x.meal !== action.payload
+        ),
       };
     default:
       return state;

@@ -47,7 +47,7 @@ const addItemToOrder = asyncHandler(async (req, res) => {
       $push: {
         orderItems: [
           {
-            ...itemObject,
+            itemObject,
             qty,
           },
         ],

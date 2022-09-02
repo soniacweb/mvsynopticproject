@@ -7,6 +7,8 @@ import {
   NativeSelect,
   Typography,
   Button,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
@@ -16,13 +18,15 @@ import { useNavigate } from "react-router-dom";
 import HeroImage from "./LazyHero/HeroImage";
 import { TableContainer } from "./ReusableTheme.styled";
 import { fetchAllTables } from "../actions/tablesActions";
+import Alert from "./reusableComponents/Alert";
 
 const Table = () => {
-  const [tableId, setTableId] = useState("");
+  const [tableId, setTableId] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userId = useSelector((state) => state.userLogin.userInfo._id);
   const [tablesList, setTablesList] = useState([]);
+  const [tableError, setTableError] = useState(false);
 
   const tableList = useSelector((state) => state.tables);
   const { loading, error, tables } = tableList;
@@ -42,9 +46,21 @@ const Table = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(createOrderAfterTableSelection(userId, tableId));
-    // redirect to menu
-    navigate("/foodmenu", { replace: true }); // redirecting to home
+
+    if (tableId) {
+      dispatch(createOrderAfterTableSelection(userId, tableId));
+      // redirect to menu
+      navigate("/foodmenu", { replace: true });
+      setTableError(false);
+    } else {
+      setTableError(true);
+    }
+  };
+
+  const handleChange = (e) => {
+    console.log("hello from handlechange", e.target.value);
+    setTableId(e.target.value);
+    setTableError(false);
   };
 
   return (
@@ -61,31 +77,43 @@ const Table = () => {
             Hey there! How many seats do you need? Select our funky tables from
             the options below!
           </Typography>
+          <br></br>
           <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
-              <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                Seats
+              <InputLabel id="demo-simple-select-label">
+                Choose Your Table!
               </InputLabel>
-              <NativeSelect
-                // defaultValue={30}
-                inputProps={{
-                  name: "Let us know!",
-                  id: "uncontrolled-native",
-                }}
-                onChange={(e) => setTableId(e.target.value)}
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={tableId}
+                label="Age"
+                onChange={handleChange}
+                required
               >
                 {tablesList.map((option) => {
                   return (
-                    <option value={option._id}>
+                    <MenuItem value={option._id}>
                       {option.spaces < 7
                         ? `${option.name} - ${option.spaces}`
                         : `${option.name} - ${option.spaces}+`}
-                    </option>
+                    </MenuItem>
                   );
                 })}
-              </NativeSelect>
+              </Select>
             </FormControl>
           </Box>
+          {tableError && (
+            <>
+              <br></br>
+              <Alert
+                severity={"error"}
+                onClose={false}
+                message="Please select your table!"
+              />
+            </>
+          )}
+          <br></br>
           <Button
             variant="outlined"
             endIcon={<ArrowForwardIcon />}
